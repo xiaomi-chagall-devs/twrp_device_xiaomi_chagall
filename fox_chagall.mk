@@ -1,11 +1,11 @@
 # ============================================================================
-# OrangeFox-specific device flags (fox_klee.mk)
+# OrangeFox-specific device flags (fox_chagall.mk)
 # Included from BoardConfig.mk; only OrangeFox reads these.
 # ============================================================================
 
 # Maintainer shown on the OrangeFox about page
 OF_MAINTAINER := kylieeXD
-FOX_TARGET_DEVICES := klee
+FOX_TARGET_DEVICES := chagall
 
 # Pack boot/vendor_boot images with magiskboot (handles MTK header quirks);
 # "new" magiskboot supports the v4 header + vendor_ramdisk fragments.

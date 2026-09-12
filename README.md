@@ -1,7 +1,7 @@
-# OrangeFox Recovery Device Tree - POCO X8 Pro / Redmi Turbo 5
+# OrangeFox Recovery Device Tree - Xiaomi 17T
 
-The POCO X8 Pro / REDMI Turbo 5 (codenamed _"klee"_) are upper mid-range smartphones from Xiaomi's sub-brand POCO / REDMI.
-Both devices were announced in April 2026.
+The Xiaomi 17T (codenamed _"chagall"_) are upper mid-range smartphones from Xiaomi.
+This device were announced in 28 May 2026.
 
 ## Device specifications
 
@@ -10,22 +10,22 @@ Basic   | Spec Sheet
 CPU     | Octa-core (1x3.4 GHz Cortex-A725 & 3x3.2 GHz Cortex-A725 & 4x2.2 GHz Cortex-A725)
 Chipset | Mediatek Dimensity 8500-Ultra (MT6899)
 GPU     | Mali-G720 MC8
-Memory  | 8/12 GB RAM
+Memory  | 12 GB RAM
 Shipped Android Version | 16
 Storage | 256/512 GB (UFS 4.1)
 Battery | Non-removable Si/C Li-Ion 6500 mAh
 Display | 1268 x 2756 pixels, 6.59 inches (~460 ppi pixel density)
-Camera  | 50MP wide camera, 8MP ultra wide-angle camera, 20MP front camera
+Camera  | 50MP wide camera, 50MP periscope telephoto, 12MP ultra wide-angle camera, 32MP front camera
 
 ## Tree layout
 
 | Path | Purpose |
 |------|---------|
-| `AndroidProducts.mk`, `twrp_klee.mk` | Lunch target (`twrp_klee-eng`) |
-| `omni_klee.mk` | Omni-style product alias with stock ROM fingerprint |
+| `AndroidProducts.mk`, `twrp_chagall.mk` | Lunch target (`twrp_chagall-eng`) |
+| `omni_chagall.mk` | Omni-style product alias with stock ROM fingerprint |
 | `BoardConfig.mk` | Board: arch, boot header, partitions, recovery flags (grouped + commented) |
 | `device.mk` | Product packages, A/B OTA config, props |
-| `fox_klee.mk` | OrangeFox-only device flags |
+| `fox_chagall.mk` | OrangeFox-only device flags |
 | `vendorsetup.sh` | Env defaults sourced by `envsetup.sh` |
 | `Android.bp` | All Soong module definitions (sources live under `src/`) |
 | `src/` | First-party C/C++ sources, one folder per module |
@@ -36,8 +36,6 @@ Camera  | 50MP wide camera, 8MP ultra wide-angle camera, 20MP front camera
 | `prebuilt/` | Stock DTB, DTBO, kernel placeholder, stock vendor ramdisk fragment |
 | `sepolicy/` | Device SELinux policy (UFS bootctl) |
 | `security/` | Signing certificate |
-| `patches/` | Idempotent patches for the OrangeFox source tree (**applied by CI/tooling**) |
-| `manifests/` | Pinned repo manifest of the exact synced sources |
 | `tools/` | All helper scripts (build, patching, verification, diagnostics) |
 
 ## Tools
@@ -92,7 +90,7 @@ artifacts and prereleases land in the fork.
 ### How to build
 
 1. Push your changes to the repo (the workflow checks out this device tree).
-2. Open the **Actions** tab -> **Build and publish OrangeFox klee**.
+2. Open the **Actions** tab -> **Build and publish OrangeFox chagall**.
 3. Click **Run workflow**:
    - leave every step toggle on (`true`) for a full clean build;
    - enable **publish** to create a prerelease when the build succeeds;
@@ -105,13 +103,13 @@ Every successful run uploads these artifacts:
 
 | Artifact | Contents |
 |----------|----------|
-| `orangefox-klee-release-<run>-<attempt>` | `OrangeFox-R12.0-Unofficial-klee-system-compatible.img` + `.sha256` |
-| `orangefox-klee-logs-<run>-<attempt>` | Full build log (`orangefox-build.log`) and `out/logs/` |
+| `orangefox-chagall-release-<run>-<attempt>` | `OrangeFox-R12.0-Unofficial-chagall-system-compatible.img` + `.sha256` |
+| `orangefox-chagall-logs-<run>-<attempt>` | Full build log (`orangefox-build.log`) and `out/logs/` |
 
 If **publish** was enabled and the run happened on `main`, a **prerelease**
-(tagged `klee-ci-<run>-<attempt>-<sha>`) is created automatically with the
+(tagged `chagall-ci-<run>-<attempt>-<sha>`) is created automatically with the
 flashable image attached. Flash it to the active slot:
 
 ```sh
-fastboot flash vendor_boot OrangeFox-R12.0-Unofficial-klee-system-compatible.img
+fastboot flash vendor_boot OrangeFox-R12.0-Unofficial-chagall-system-compatible.img
 ```

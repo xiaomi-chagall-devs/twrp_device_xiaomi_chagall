@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------
-# klee_kernel.te - kernel domain bring-up permissive
+# chagall_kernel.te - kernel domain bring-up permissive
 #
 # dmesg/logcat show a repeating permissive=0 denial:
 #   avc: denied { search } for name="block" dev="tmpfs" ino=12
