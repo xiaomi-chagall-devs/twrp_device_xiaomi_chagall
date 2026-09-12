@@ -4,7 +4,7 @@
 # Exit codes 20-25 signal which stage failed.
 
 logk() {
-    echo "klee_fbe_prep: $*" > /dev/kmsg
+    echo "chagall_fbe_prep: $*" > /dev/kmsg
 }
 
 logk "starting FINAL4 embedded-Weaver prep"

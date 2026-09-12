@@ -1,9 +1,9 @@
 # UFS boot-control HAL access
 
-type klee_ufs_bootctl_device, dev_type;
+type chagall_ufs_bootctl_device, dev_type;
 
 allow hal_bootctl_default self:capability sys_rawio;
-allow hal_bootctl_default klee_ufs_bootctl_device:chr_file rw_file_perms;
+allow hal_bootctl_default chagall_ufs_bootctl_device:chr_file rw_file_perms;
 
 # Bring-up: permissive until the rootfs:dir denial is scoped down.
 permissive hal_bootctl_default;

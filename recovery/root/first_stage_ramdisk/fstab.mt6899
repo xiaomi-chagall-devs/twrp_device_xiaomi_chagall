@@ -1,4 +1,4 @@
-# fstab.mt6899 - second-stage fstab (MT6899 / klee)
+# fstab.mt6899 - second-stage fstab (MT6899 / chagall)
 
 # Dynamic (super) partitions - AVB verified
 system /system erofs ro wait,slotselect,avb=vbmeta_system,logical,first_stage_mount,avb_keys=/avb/q-gsi.avbpubkey:/avb/r-gsi.avbpubkey:/avb/s-gsi.avbpubkey

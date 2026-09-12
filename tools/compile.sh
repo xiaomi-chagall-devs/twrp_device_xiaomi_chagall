@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build entry point for klee. Usage: ./tools/compile.sh [targets...]
+# Build entry point for chagall. Usage: ./tools/compile.sh [targets...]
 # Defaults to a low-RAM profile; logs go to out/logs/.
 set -euo pipefail
 
@@ -27,7 +27,7 @@ fi
 export OF_LOW_MEMORY_BUILD="${OF_LOW_MEMORY_BUILD:-1}"
 export OF_BUILD_JOBS="${OF_BUILD_JOBS:-1}"
 export ALLOW_MISSING_DEPENDENCIES="${ALLOW_MISSING_DEPENDENCIES:-true}"
-export FOX_BUILD_DEVICE="${FOX_BUILD_DEVICE:-klee}"
+export FOX_BUILD_DEVICE="${FOX_BUILD_DEVICE:-chagall}"
 export FOX_AB_DEVICE="${FOX_AB_DEVICE:-1}"
 export FOX_VIRTUAL_AB_DEVICE="${FOX_VIRTUAL_AB_DEVICE:-1}"
 export OF_FORCE_PREBUILT_KERNEL="${OF_FORCE_PREBUILT_KERNEL:-1}"
@@ -56,16 +56,16 @@ if [ "${#TARGETS[@]}" -eq 0 ]; then
     TARGETS=(adbd vendorbootimage)
 fi
 
-LOG_FILE="${LOG_DIR}/klee-lowmem-$(date +%Y%m%d-%H%M%S).log"
+LOG_FILE="${LOG_DIR}/chagall-lowmem-$(date +%Y%m%d-%H%M%S).log"
 
 cd "${TOP_DIR}"
 set +u
 source build/envsetup.sh
-lunch twrp_klee-ap2a-eng
+lunch twrp_chagall-ap2a-eng
 
 if printf ' %s ' "${TARGETS[*]}" | grep -q ' vendorbootimage '; then
-    rm -rf "${OUT_DIR}/target/product/klee/recovery"
-    rm -f "${OUT_DIR}/target/product/klee/obj/PACKAGING/recovery_intermediates/ramdisk_files-timestamp"
+    rm -rf "${OUT_DIR}/target/product/chagall/recovery"
+    rm -f "${OUT_DIR}/target/product/chagall/obj/PACKAGING/recovery_intermediates/ramdisk_files-timestamp"
 fi
 
 echo "log: ${LOG_FILE}"

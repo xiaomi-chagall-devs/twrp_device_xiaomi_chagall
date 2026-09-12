@@ -133,7 +133,7 @@ upx_binaries=(
     e2fsdroid erase_image exfat-fuse fastbootd fatlabel flash_image fsck.exfat
     fsck.f2fs fsck.fat fscryptpolicyget grep keystore2 keystore_cli_v2 logcat
     logd lptools lzma make_f2fs minadbd mke2fs mkexfatfs mkfs.fat nano
-    ozip_decrypt pigz reboot recovery resetprop resize2fs klee_omapi_bridge
+    ozip_decrypt pigz reboot recovery resetprop resize2fs chagall_omapi_bridge
     sgdisk simg2img sload_f2fs tune2fs twrp update_engine_sideload vold_prepare_subdirs
     watchdogd ziptool android.hardware.boot@1.2-service
 )

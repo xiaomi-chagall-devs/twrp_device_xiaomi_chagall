@@ -1,5 +1,5 @@
 # Lunch targets
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_klee.mk
+    $(LOCAL_DIR)/twrp_chagall.mk
 
-COMMON_LUNCH_CHOICES := twrp_klee-eng
+COMMON_LUNCH_CHOICES := twrp_chagall-eng

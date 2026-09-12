@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a klee vendor-boot DTB without the USB offload property."""
+"""Build a chagall vendor-boot DTB without the USB offload property."""
 
 import argparse
 import pathlib
@@ -41,7 +41,7 @@ def patch_dtb(input_path: pathlib.Path, output_path: pathlib.Path) -> None:
     if inner_dtb[:4] != FDT_MAGIC:
         raise RuntimeError("MediaTek wrapper does not contain an FDT at its declared offset")
 
-    with tempfile.TemporaryDirectory(prefix="klee-dtb-") as temporary_directory:
+    with tempfile.TemporaryDirectory(prefix="chagall-dtb-") as temporary_directory:
         inner_path = pathlib.Path(temporary_directory) / "inner.dtb"
         inner_path.write_bytes(inner_dtb)
 

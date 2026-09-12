@@ -1,5 +1,5 @@
-# klee (POCO X8 Pro / Redmi Turbo 5) - OrangeFox board config
-DEVICE_PATH := device/xiaomi/klee
+# chagall (Xiaomi 17T) - OrangeFox board config
+DEVICE_PATH := device/xiaomi/chagall
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
@@ -22,14 +22,14 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a55
 # SoC / bootloader
 TARGET_BOARD_PLATFORM := mt6899
 TARGET_BOOTLOADER_BOARD_NAME := mt6899
-TARGET_OTA_ASSERT_DEVICE := klee
+TARGET_OTA_ASSERT_DEVICE := chagall
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := true
 TARGET_NO_RECOVERY := true
 BOARD_USES_MTK_HARDWARE := true
 
 # Kernel / DTB (prebuilt, recovery lives in vendor_boot)
-TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb/mt6899-klee.dtb
+TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb/mt6899-chagall.dtb
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
 BOARD_RAMDISK_USE_LZ4 := true
@@ -41,7 +41,7 @@ BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
 
 # Touch modules loaded from vendor_boot
 TW_LOAD_VENDOR_BOOT_MODULES := true
-TW_LOAD_VENDOR_MODULES := "nt38771_touch_klee.ko xiaomi_touch_klee.ko"
+TW_LOAD_VENDOR_MODULES := "nt38771_touch_chagall.ko xiaomi_touch_chagall.ko"
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
 # Boot image header
@@ -175,10 +175,10 @@ TW_USE_FSCRYPT_POLICY := 2
 
 TW_RECOVERY_ADDITIONAL_RELINK_LIBRARY_FILES = \
     $(TARGET_OUT_SHARED_LIBRARIES)/libtrusty.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libklee_libcxx_compat.so
+    $(TARGET_OUT_SHARED_LIBRARIES)/libchagall_libcxx_compat.so
 
 OF_MAINTAINER := kylieeXD
-FOX_TARGET_DEVICES := klee
+FOX_TARGET_DEVICES := chagall
 
 OF_USE_MAGISKBOOT := 1
 OF_USE_NEW_MAGISKBOOT := 1

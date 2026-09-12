@@ -1,4 +1,4 @@
-# Main device init rc (MT6899 / klee)
+# Main device init rc (MT6899 / chagall)
 
 import /init.recovery.bootctl.rc
 import /init.recovery.keymint.rc

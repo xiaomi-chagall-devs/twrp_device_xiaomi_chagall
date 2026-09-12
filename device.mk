@@ -1,5 +1,5 @@
-# Product config for klee OrangeFox recovery
-DEVICE_PATH := device/xiaomi/klee
+# Product config for chagall OrangeFox recovery
+DEVICE_PATH := device/xiaomi/chagall
 
 # Base product fragments
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
@@ -93,8 +93,8 @@ PRODUCT_PACKAGES += \
     fastbootd \
     fsck.erofs \
     fsck.f2fs \
-    klee_omapi_bridge \
-    libklee_libcxx_compat \
+    chagall_omapi_bridge \
+    libchagall_libcxx_compat \
     lpdump \
     lpunpack \
     make_f2fs \

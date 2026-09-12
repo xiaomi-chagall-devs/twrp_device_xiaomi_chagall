@@ -1,5 +1,5 @@
 /*
- * klee_omapi_bridge - OMAPI service backed by the eSE Secure Element HAL.
+ * chagall_omapi_bridge - OMAPI service backed by the eSE Secure Element HAL.
  */
 
 #include <aidl/android/hardware/secure_element/BnSecureElementCallback.h>

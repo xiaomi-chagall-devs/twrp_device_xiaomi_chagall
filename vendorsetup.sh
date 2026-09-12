@@ -2,7 +2,7 @@
 
 # OrangeFox build switches
 export ALLOW_MISSING_DEPENDENCIES=true
-export FOX_BUILD_DEVICE=klee
+export FOX_BUILD_DEVICE=chagall
 export FOX_AB_DEVICE=1
 export FOX_VIRTUAL_AB_DEVICE=1
 
