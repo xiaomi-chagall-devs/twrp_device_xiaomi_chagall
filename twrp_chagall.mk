@@ -1,4 +1,3 @@
-# TWRP-style product (the one selected by `lunch twrp_chagall-eng`).
 $(call inherit-product, device/xiaomi/chagall/device.mk)
 
 PRODUCT_DEVICE := chagall
