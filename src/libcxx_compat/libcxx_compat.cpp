@@ -7,10 +7,10 @@
 #include <stdlib.h>
 
 extern "C" __attribute__((noreturn, visibility("default")))
-void ChagallLibcppVerboseAbort(const char* format, ...)
+void KleeLibcppVerboseAbort(const char* format, ...)
     __asm__("_ZNSt3__122__libcpp_verbose_abortEPKcz");
 
-void ChagallLibcppVerboseAbort(const char* format, ...) {
+void KleeLibcppVerboseAbort(const char* format, ...) {
     va_list args;
     va_start(args, format);
     __android_log_vprint(ANDROID_LOG_FATAL, "chagall-libcxx-compat", format, args);

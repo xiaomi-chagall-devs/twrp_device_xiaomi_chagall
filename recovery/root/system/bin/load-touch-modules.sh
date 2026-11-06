@@ -13,5 +13,5 @@ load_module() {
 }
 
 load_module miev.ko
-load_module xiaomi_touch_chagall.ko
-load_module nt38771_touch_chagall.ko
+load_module xiaomi_touch_klee.ko
+load_module nt38771_touch_klee.ko
