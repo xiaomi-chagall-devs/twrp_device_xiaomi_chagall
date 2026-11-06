@@ -49,9 +49,28 @@ if ! grep -q ' /data ' /proc/mounts 2>/dev/null; then
 fi
 logk "crypto/data ready: tee=$TEE keymint=$KM gatekeeper=$GK"
 
+# Backend selection. Weaver slot data lives in the backend the ROM used
 COUNTRY="$(getprop ro.boot.ptcountrycode)"
-if [ "$COUNTRY" = "cn" ] || [ "$COUNTRY" = "CN" ]; then
-    logk "weaver selector: country=$COUNTRY backend=xiaomi"
+HWC="$(getprop ro.boot.hwc)"
+BACKEND="$(getprop chagall.weaver_backend)"
+case "$BACKEND" in
+    xiaomi|nxp) WHY="override" ;;
+    *)
+        case "$HWC" in
+            GL|gl|Global|global) BACKEND=nxp;    WHY="hwc=$HWC" ;;
+            CN|cn|China|china)   BACKEND=xiaomi; WHY="hwc=$HWC" ;;
+            *)
+                if [ "$COUNTRY" = "cn" ] || [ "$COUNTRY" = "CN" ]; then
+                    BACKEND=xiaomi
+                else
+                    BACKEND=nxp
+                fi
+                WHY="country=${COUNTRY:-unknown}" ;;
+        esac ;;
+esac
+logk "weaver selector: backend=$BACKEND ($WHY) hwc=${HWC:-?} country=${COUNTRY:-?}"
+
+if [ "$BACKEND" = "xiaomi" ]; then
     WV="$(getprop init.svc.vendor.weaver_xiaomi)"
     if [ "$WV" != "running" ]; then
         setprop ctl.start vendor.weaver_xiaomi
@@ -64,10 +83,9 @@ if [ "$COUNTRY" = "cn" ] || [ "$COUNTRY" = "CN" ]; then
         /system/bin/sleep 1
         i=$((i + 1))
     done
-    logk "CN Xiaomi Weaver state=$WV pid=$(getprop init.svc_debug_pid.vendor.weaver_xiaomi)"
+    logk "Xiaomi Weaver state=$WV pid=$(getprop init.svc_debug_pid.vendor.weaver_xiaomi)"
     [ "$WV" = "running" ] || exit 25
 else
-    logk "weaver selector: country=${COUNTRY:-unknown} backend=nxp"
     WV="$(getprop init.svc.vendor.weaver_nxp)"
     if [ "$WV" != "running" ]; then
         setprop ctl.start vendor.weaver_nxp
