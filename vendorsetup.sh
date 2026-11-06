@@ -1,12 +1,18 @@
-# Sourced by envsetup.sh; sets device defaults before lunch.
+# ============================================================================
+# vendorsetup.sh - sourced automatically by `source build/envsetup.sh`
+# Exports device defaults before any lunch target is selected.
+#
+# NOTE: the low-memory build knobs (jobs/Go GC/java heap) live here AND in
+# tools/compile.sh; that script re-exports them for standalone builds.
+# ============================================================================
 
-# OrangeFox build switches
-export ALLOW_MISSING_DEPENDENCIES=true
-export FOX_BUILD_DEVICE=chagall
-export FOX_AB_DEVICE=1
-export FOX_VIRTUAL_AB_DEVICE=1
+# --- OrangeFox build-system switches ----------------------------------------
+export ALLOW_MISSING_DEPENDENCIES=true      # recovery-only tree, tolerate gaps
+export FOX_BUILD_DEVICE=chagall                # device codename for Fox scripts
+export FOX_AB_DEVICE=1                      # A/B (seamless update) device
+export FOX_VIRTUAL_AB_DEVICE=1              # virtual A/B with snapshots
 
-# Use full GNU userland binaries instead of toybox applets
+# Use full GNU userland binaries instead of toybox applets in the ramdisk
 export FOX_USE_BASH_SHELL=1
 export FOX_ASH_IS_BASH=1
 export FOX_USE_GREP_BINARY=1
@@ -16,11 +22,12 @@ export FOX_USE_XZ_UTILS=1
 export FOX_USE_ZIP_BINARY=1
 export FOX_USE_LZ4_BINARY=1
 
-# Prebuilt kernel only
+# Never compile a kernel; always reuse the prebuilt one from prebuilt/
 export OF_FORCE_PREBUILT_KERNEL=1
 export OF_USE_LZ4_COMPRESSION=1
 
-# Low-memory profile for CI runners / small hosts
+# --- Low-memory build profile (CI runners / small hosts) --------------------
+# Single-threaded ninja + capped Go/JVM heaps keep peak RSS under ~8 GiB.
 export OF_LOW_MEMORY_BUILD="${OF_LOW_MEMORY_BUILD:-1}"
 if [ "${OF_LOW_MEMORY_BUILD}" = "1" ]; then
     export OF_BUILD_JOBS="${OF_BUILD_JOBS:-1}"

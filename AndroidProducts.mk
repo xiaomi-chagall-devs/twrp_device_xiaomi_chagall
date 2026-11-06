@@ -1,4 +1,5 @@
-# Lunch targets
+# Lunch targets for the chagall device tree.
+# twrp_chagall is the single product; -eng is the only build type needed.
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_chagall.mk
 

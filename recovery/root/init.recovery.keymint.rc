@@ -1,4 +1,8 @@
-# TEE stack: tee-supplicant, keymint, secure element and Weaver bring-up
+# ============================================================================
+# TEE stack: tee-supplicant + Mitee keymint/gatekeeper HALs
+# Started in order: tee-supplicant -> keymint -> secure element ->
+# chagall.fbe_prep (embedded Weaver bring-up, see system/bin/chagall_fbe_prep.sh).
+# ============================================================================
 
 service tee-supplicant /vendor/bin/tee-supplicant
     class core

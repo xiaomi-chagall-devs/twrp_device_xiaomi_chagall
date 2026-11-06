@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Build a chagall vendor-boot DTB without the USB offload property."""
+"""Build a chagall vendor-boot DTB without Android USB offload coupling.
+
+Reads the stock MTK-wrapped DTB (prebuilt/dtb/mt6899-chagall.dtb), removes the
+`mediatek,usb-offload` property from the xhci0 node so the recovery kernel
+does not bind USB offload to a missing userspace service, and writes an
+unwrapped/padded copy ready for mkbootimg --dtb.
+"""
 
 import argparse
 import pathlib

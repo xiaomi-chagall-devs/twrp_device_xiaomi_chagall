@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
-# Preflight: pinned-manifest check plus shell/Python syntax checks.
+# ============================================================================
+# verify-build-inputs.sh - preflight checks before building
+#
+# Usage: tools/verify-build-inputs.sh [path-to-fox-tree]
+#
+# 1. Compares the synced OrangeFox tree against the pinned manifest
+#    (manifests/orangefox-fox_14.1-pinned.xml); bypass with
+#    RODIN_ALLOW_UNPINNED_SOURCE=1.
+# 2. `bash -n` syntax-checks every device-tree shell script.
+# 3. Syntax-checks the Python helpers via --help.
+# ============================================================================
 set -euo pipefail
 
 DEVICE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"

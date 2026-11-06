@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
-# Collects touch/compat diagnostics over adb/fastboot into a timestamped folder.
-# Review serial numbers and logs before sharing publicly.
+# ============================================================================
+# collect-compat-report.sh - gather a touch/compat diagnostics bundle
+#
+# Usage: tools/collect-compat-report.sh [output-dir] [image-to-hash]
+#
+# Pulls device state over adb/fastboot (props, kernel, modules, input devices,
+# sysfs, dmesg, recovery.log, pstore) into a timestamped folder for bug
+# reports. Review the contents for serial numbers before sharing publicly.
+# ============================================================================
 set -euo pipefail
 
 OUTPUT_DIR="${1:-chagall-compat-$(date +%Y%m%d-%H%M%S)}"

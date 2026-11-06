@@ -1,5 +1,8 @@
 #!/sbin/sh
-# Loads the touch modules in dependency order.
+# Loads the Novatek NT38771 touch driver and the Xiaomi touch framework.
+#
+# All three modules ship inside the recovery ramdisk (vendor_boot) and must be
+# loaded in dependency order: miev -> xiaomi_touch_klee -> nt38771_touch_klee.
 
 set +e
 
